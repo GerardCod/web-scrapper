@@ -5,5 +5,7 @@ if __name__ == '__main__':
     content = file.read()
     soup = BeautifulSoup(content, 'html.parser')
 
-    for element in soup.find_all('div'):
-      print(element, '\n')
+    for element in soup.find_all('div', {'title': 'buyer-info'}):
+      div = element.find('div', {'title': 'buyer-name'})
+      span = element.find('span')
+      print(div.text, span.get_text())
