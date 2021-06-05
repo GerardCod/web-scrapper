@@ -5,10 +5,17 @@ if __name__ == '__main__':
     content = file.read()
     soup = BeautifulSoup(content, 'html.parser')
 
-    div = soup.find_all('div', {'title': 'buyer-info'})
+    # div = soup.find_all('div', {'title': 'buyer-name'})[0]
+    div = soup.find('div', string='Carson Busses')
+    """ 
+    print(div.next_sibling) # Salto de línea
+    print(div.next_sibling.next_sibling) # span
+    print(div.next_sibling.next_sibling.next_sibling) # Salto de línea
+    print(div.previous_sibling) # Salto de línea 
+    """
 
-    nodes = div[0].contents
-    print(nodes)
+    for element in div.next_siblings:
+      print(element)
 
-    for child in div[0].children:
-      print(child)
+    for element in div.previous_siblings:
+      print(element)
