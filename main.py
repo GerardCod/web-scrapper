@@ -6,16 +6,6 @@ if __name__ == '__main__':
     soup = BeautifulSoup(content, 'html.parser')
 
     # div = soup.find_all('div', {'title': 'buyer-name'})[0]
-    div = soup.find('div', string='Carson Busses')
-    """ 
-    print(div.next_sibling) # Salto de línea
-    print(div.next_sibling.next_sibling) # span
-    print(div.next_sibling.next_sibling.next_sibling) # Salto de línea
-    print(div.previous_sibling) # Salto de línea 
-    """
-
-    for element in div.next_siblings:
-      print(element)
-
-    for element in div.previous_siblings:
-      print(element)
+    span = soup.find('span', class_='item-price')
+    for element in span.parents:
+      print(element.name)
