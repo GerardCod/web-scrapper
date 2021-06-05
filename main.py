@@ -5,10 +5,6 @@ if __name__ == '__main__':
     content = file.read()
     soup = BeautifulSoup(content, 'html.parser')
 
-    """ Primera forma de búsqueda por clases 
-    for element in soup.find_all(attrs={'class':'item-price'}):
-      print(element.text) 
-    """
-
-    for element in soup.find_all(class_='item-price'):
-      print(element.text)
+    div = soup.find_all('div', {'title': 'buyer-info'})
+    for child in div[0].children:
+      print(child)
