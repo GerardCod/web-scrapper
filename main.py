@@ -7,6 +7,7 @@ URL = 'https://news.google.com/topics/CAAqLQgKIidDQkFTRndvSkwyMHZNR1ptZHpWbUVnWm
 if __name__ == '__main__':
   response = requests.get(URL)
 
+  # Cron jobs: es un programa que se ejecuta como proceso en segundo plano para llevar a cabo una tarea en una fecha establecida.
   if response.status_code == 200:
     content = response.text
     soup = BeautifulSoup(content, 'html.parser')
